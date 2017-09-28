@@ -1,0 +1,73 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+
+int Setquestion()
+{
+	srand(unsigned(time(NULL)));
+	int i = 0, n = 0, x = 0;
+	float s;
+	int type;
+	int a, b;
+	while (1)
+	{
+		type = rand() % 4;
+		a = rand() % 100;
+		b = rand() % 100;
+		switch (type)
+		{
+		case 0:
+			s = a + b;
+			printf("%d + %d = ?\n", a, b);
+			break;
+		case 1:
+			s = a - b;
+			printf("%d - %d = ?\n", a, b);
+			break;
+		case 2:
+			s = a * b;
+			printf("%d * %d = ?\n", a, b);
+			break;
+		case 3:
+			s = a / b;
+			printf("%d / %d = ?\n", a, b);
+			break;
+		}
+		return s;
+	}
+}
+
+int main()
+{
+	char flag;
+	float s, s1;
+	while (1)
+	{
+		printf("是否出题?[Y/N]");
+		printf("\n");
+		scanf("%c", &flag);
+		if (flag == 'Y' || flag == 'y')
+		{
+			s = Setquestion();
+			printf("请输入答案：");
+			scanf("%f", &s1);
+			if (s1-s == 0)
+			{
+				printf("你输入的答案正确！\n");
+			}
+			else
+			{
+				printf("你输入的答案错误！\n");
+			}
+		}
+		else
+			if (flag == 'N' || flag == 'n')
+				break;
+	}
+	printf("谢谢使用！\n");
+	system("pause");
+	return 0;
+}
+
